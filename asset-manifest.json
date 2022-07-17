@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/rentomojoAssignment/static/css/main.6e3f88e6.css",
+    "main.js": "/rentomojoAssignment/static/js/main.ad1b066e.js",
+    "static/js/787.7c092d67.chunk.js": "/rentomojoAssignment/static/js/787.7c092d67.chunk.js",
+    "static/media/rento.png": "/rentomojoAssignment/static/media/rento.1523b58ea8b3d441c380.png",
+    "index.html": "/rentomojoAssignment/index.html",
+    "main.6e3f88e6.css.map": "/rentomojoAssignment/static/css/main.6e3f88e6.css.map",
+    "main.ad1b066e.js.map": "/rentomojoAssignment/static/js/main.ad1b066e.js.map",
+    "787.7c092d67.chunk.js.map": "/rentomojoAssignment/static/js/787.7c092d67.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e3f88e6.css",
+    "static/js/main.ad1b066e.js"
+  ]
+}
