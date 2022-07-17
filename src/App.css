@@ -1,38 +1,37 @@
+@import url(//db.onlinewebfonts.com/c/b1b2e2db2eef02d230247a474d1d66a6?family=Chiller);
+
+
 .App {
+  background-color: black;
+  
+}
+
+.foot{
   text-align: center;
+    color: rgb(10, 10, 10);
+}
+.alignment{
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 15px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.table{
+  margin: 30px 100px 30px 100px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.tbbg{
+  background-color: #68bbdf;
+  border-radius: 10px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.search{
+display: flex;
+align-items: center;
+justify-content: center;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.heading{
+  color: #ffffff;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-family: 'Courier New', Courier, monospace;
+  
 }
