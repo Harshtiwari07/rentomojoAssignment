@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
-
 import SearchBar from "material-ui-search-bar";
 import { Button } from "@mui/material";
 
-
-
-const columns = [
-  { field: 'title', headerName: 'Title', width: 400 },
+const col = [
+  { field: 'title', headerName: 'Title of game', width: 400 },
   { field: 'platform', headerName: 'Platfrom', width: 250, align: 'center', headerAlign: 'center' },
   { field: 'score', headerName: 'Score', width: 250, align: 'center', headerAlign: 'center' },
   { field: 'genre', headerName: 'Genre', width: 250, align: 'center', headerAlign: 'center' },
@@ -17,30 +14,25 @@ const columns = [
 
 export default function Tables() {
 
-  const [users, setUser] = useState([]);
+  const [apis, setApis] = useState([]);
   const [pageSize, setPageSize] = React.useState(20);
-  const [searched, setSearched] = useState("");
+  const [search, setsearch] = useState("");
 
 
-
- //Styling For Table Contents 
-const textclass = {
-  fontFamily: "chiller",
-  fontSize: "28px"
-}
-
+  //Styling For Table Contents 
+  const textclass = {
+    fontFamily: "chiller",
+    fontSize: "28px"
+  }
 
 
-
-  //Function to Fetch the API DATA
-  const fetchData = () => {
+  const apiData = () => {
     fetch("https://s3-ap-southeast-1.amazonaws.com/he-public-data/gamesarena274f2bf.json")
       .then((response) => {
         return response.json();
-      }).then((data) => {
+      }).then((apidata) => {
 
-
-        //Adding ids to Each Object
+      
         function addId(id) {
           return function iter(o) {
             if ('title' in o) {
@@ -51,87 +43,77 @@ const textclass = {
             });
           };
         }
-        data.forEach(addId(1))
-        data.splice(0, 1);
-        setUser(data)
-        console.log(data);
+        apidata.forEach(addId(1))
+        apidata.splice(0, 1);
+        setApis(apidata)
+        console.log(apidata);
 
       })
   }
   useEffect(() => {
-    fetchData();
+    apiData();
   }, [])
-  
 
 
-  //Mapping od Data Fetched
-  const rows = users?.map(user => {
+  const rows = apis?.map(api => {
     return {
-      title: user?.title,
-      score: user?.score,
-      platform: user?.platform,
-      id: user?.id,
-      genre: user?.genre,
-      editors_choice: user?.editors_choice,
+      title: api?.title,
+      score: api?.score,
+      platform: api?.platform,
+      id: api?.id,
+      genre: api?.genre,
+      editors_choice: api?.editors_choice,
     }
   })
 
-  //Search fuctionality
-  const requestSearch = (searchedVal) => {
-    const filteredRows = users.filter((row) => {
-      return row.title.toLowerCase().includes(searchedVal.toLowerCase());
+  const reqSearch = (searchVal) => {
+    const filteredRows = apis.filter((row) => {
+      return row.title.toLowerCase().includes(searchVal.toLowerCase());
     });
-    setUser(filteredRows);
-    // console.log(filteredRows);
+    setApis(filteredRows);
   };
 
-  //function for refreshing 
-  function refreshPage() {
+  function refPage() {
     window.location.reload();
   }
-
-
-
-
-
 
   return (
     <div >
       <div className="search">
-      <Paper
-        component="form"
-        sx={{
-          p: '2px 4px',
-          display: 'flex',
-          alignItems: 'center',
-          backgroundColor: "#a267f5"
-        }} >
-        <SearchBar
-            sx={{ fontFamily: 'Monospace'}}
-            value={searched}
-            onChange={(searchVal) => requestSearch(searchVal)}
-            onCancelSearch={() =>  refreshPage()}
-          />
-          <Button 
+        <Paper
+          component="form"
           sx={{
-            borderRadius: "100px",
-            backgroundColor: "#e4f0e2",
-            color: "black",
-            fontFamily: 'Monospace'
-          }}
-          variant="contained"
-          onClick={ refreshPage }>
-          Refresh
+            p: '2px 4px',
+            display: 'flex',
+            alignItems: 'center',
+            backgroundColor: "#a267f5"
+          }} >
+          <SearchBar
+            sx={{ fontFamily: 'Monospace' }}
+            value={search}
+            onChange={(searchVal) => reqSearch(searchVal)}
+            onCancelSearch={() => refPage()}
+          />
+          <Button
+            sx={{
+              borderRadius: "100px",
+              backgroundColor: "#e4f0e2",
+              color: "black",
+              fontFamily: 'Monospace'
+            }}
+            variant="contained"
+            onClick={refPage}>
+            Refresh
           </Button>
-        
-      </Paper>
+
+        </Paper>
       </div>
-      <div className="tbbg" style={{ height: 750, width: '100%', margin: '20px', padding: '15px'}}>
+      <div className="tbbg" style={{ height: 750, width: '100%', margin: '20px', padding: '15px' }}>
         <DataGrid
-        style={textclass}
+          style={textclass}
           rows={rows}
           getRowId={(row) => row.id}
-          columns={columns}
+          columns={col}
           pageSize={pageSize}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           rowsPerPageOptions={[20, 50, 99]}
