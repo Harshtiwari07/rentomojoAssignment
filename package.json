@@ -1,5 +1,6 @@
 {
   "name": "game-fetch",
+  "homepage": "https://Harshtiwari07.github.io/rentomojoAssignment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +14,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "gh-pages": "^4.0.0",
     "material-ui-search-bar": "^1.0.0",
     "mdb-react-ui-kit": "^4.1.0",
     "mdb-ui-kit": "^4.3.0",
@@ -26,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

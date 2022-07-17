@@ -22,7 +22,7 @@ export default function Tables() {
   //Styling For Table Contents 
   const textclass = {
     fontFamily: "chiller",
-    fontSize: "28px"
+    fontSize: "24px"
   }
 
 
